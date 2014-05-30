@@ -23,7 +23,7 @@ APP.NoteEditView = Backbone.View.extend({
       description: this.$el.find('textarea[name=description]').val()
     });
     // we would save to the server here with
-    // this.note.save();
+     this.note.save();
     // redirect back to the index
     window.location.hash = "notes/index";
   },

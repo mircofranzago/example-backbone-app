@@ -2,6 +2,7 @@
 window.APP = window.APP || {};
 APP.NoteRouter = Backbone.Router.extend({
   routes: {
+    "": "index",
     "note/new": "create",
     "notes/index": "index",
     "note/:id/edit": "edit",
@@ -14,6 +15,7 @@ APP.NoteRouter = Backbone.Router.extend({
     this.notes.bind('reset', this.updateDebug, this);
     this.notes.bind('add', this.updateDebug, this);
     this.notes.bind('remove', this.updateDebug, this);
+
     this.index();
   },
 
@@ -23,7 +25,8 @@ APP.NoteRouter = Backbone.Router.extend({
 
   create: function () {
     this.currentView = new APP.NoteNewView({
-      notes: this.notes, note: new APP.NoteModel()
+      notes: this.notes, 
+      note: new APP.NoteModel()
     });
 
     $('#primary-content').html(this.currentView.render().el);
@@ -49,7 +52,7 @@ APP.NoteRouter = Backbone.Router.extend({
     });
     $('#primary-content').html(this.currentView.render().el);
     // we would call to the index with
-    // this.notes.fetch()
+    this.notes.fetch();
     // to pull down the index json response to populate our collection initially
   }
 });

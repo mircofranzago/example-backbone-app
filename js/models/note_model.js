@@ -21,6 +21,9 @@ APP.NoteModel = Backbone.Model.extend({
 });
 
 APP.NoteCollection = Backbone.Collection.extend({
+
+  localStorage: new Backbone.LocalStorage("NotesCollection"),
+
   // Reference to this collection's model.
   model: APP.NoteModel
 });

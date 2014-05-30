@@ -37,7 +37,7 @@ APP.NoteNewView = Backbone.View.extend({
     if (this.note.isValid()){
       // add it to the collection
       this.notes.add(this.note);
-      // this.note.save();
+      this.note.save();
       // redirect back to the index
       window.location.hash = "notes/index";
     }
